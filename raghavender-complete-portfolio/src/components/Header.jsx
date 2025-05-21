@@ -20,8 +20,6 @@ export default function Header({ theme, toggleTheme }) {
             "Experience",
             "Projects",
             "Education",
-            "Achievements",
-            "Certifications",
             "Contact"
           ].map((item) => (
             <a
