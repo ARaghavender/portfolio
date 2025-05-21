@@ -1,3 +1,4 @@
+// src/App.jsx
 import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Hero from "./sections/Hero";
@@ -11,61 +12,57 @@ import Achievements from "./sections/Achievements";
 import Contact from "./sections/Contact";
 
 export default function App() {
-  // Initialize theme from document class (set in index.js)
-  const [theme, setTheme] = useState(
-    document.documentElement.classList.contains("dark") ? "dark" : "light"
-  );
+  const [theme, setTheme] = useState(() => {
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme || (document.documentElement.classList.contains("dark") ? "dark" : "light");
+  });
 
-  // Function to handle theme changes
-  const handleThemeChange = (newTheme) => {
-    // Update state
+  const applyTheme = (newTheme) => {
     setTheme(newTheme);
-    
-    // Update document classes
     document.documentElement.classList.remove("light", "dark");
     document.documentElement.classList.add(newTheme);
-    
-    // Save to localStorage
+    document.documentElement.style.colorScheme = newTheme;
+  };
+
+  const handleUserThemeChange = (newTheme) => {
+    applyTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    
-    // Log for debugging
-    console.log(`Theme changed to: ${newTheme}`);
-    console.log(`HTML classes: ${document.documentElement.className}`);
+    localStorage.setItem("theme-preference", "user");
   };
 
-  // Toggle theme function to pass to Header
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    handleThemeChange(newTheme);
+    const newTheme = theme === "dark" ? "light" : "dark";
+    handleUserThemeChange(newTheme);
   };
 
-  // Watch for system theme changes
   useEffect(() => {
+    document.documentElement.classList.add("theme-transition"); // ✅ only once after mount
+
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    
     const handleSystemThemeChange = (e) => {
-      // Only change theme if we're following system preference
-      // (no localStorage theme has been set)
-      if (!localStorage.getItem("theme")) {
-        const newTheme = e.matches ? "dark" : "light";
-        handleThemeChange(newTheme);
+      const userPreference = localStorage.getItem("theme-preference");
+      if (userPreference !== "user") {
+        const newSystemTheme = e.matches ? "dark" : "light";
+        applyTheme(newSystemTheme);
+        localStorage.setItem("theme", newSystemTheme);
       }
     };
-    
-    // Listen for changes
+
     mediaQuery.addEventListener("change", handleSystemThemeChange);
-    
-    // Cleanup
+
+    // Ensure correct theme is set on mount
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+    document.documentElement.style.colorScheme = theme;
+
     return () => {
       mediaQuery.removeEventListener("change", handleSystemThemeChange);
     };
-  }, []);
+  }, [theme]);
 
   return (
-    // Force the container to take the full height
-    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
       <Header theme={theme} toggleTheme={toggleTheme} />
-      
       <main className="flex-grow space-y-20 pt-20">
         <Hero />
         <About />
