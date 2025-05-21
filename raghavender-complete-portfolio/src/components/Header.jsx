@@ -6,7 +6,6 @@ export default function Header({ theme, toggleTheme }) {
   return (
     <header className="fixed top-0 w-full z-50 bg-white dark:bg-gray-900 shadow-sm border-b overflow-x-auto">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4 whitespace-nowrap">
-        
         {/* Logo */}
         <div className="text-2xl font-extrabold text-indigo-600 font-pop tracking-tight">
           RA
@@ -21,6 +20,7 @@ export default function Header({ theme, toggleTheme }) {
             "Experience",
             "Projects",
             "Education",
+            "Achievements",
             "Certifications",
             "Contact"
           ].map((item) => (

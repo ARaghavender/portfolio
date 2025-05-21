@@ -18,7 +18,7 @@ const SkillSection = ({ title, skills }) => (
 
 export default function Skills() {
   return (
-    <section id="skills" className="max-w-6xl mx-auto px-6 py-16 bg-white scroll-mt-32 dark:bg-gray-900">
+    <section id="skills" className="max-w-6xl mx-auto px-6 py-16 bg-white scroll-mt-24 md:scroll-mt-32 dark:bg-gray-900">
       {/* Section heading like the image */}
       <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">
         Skills
