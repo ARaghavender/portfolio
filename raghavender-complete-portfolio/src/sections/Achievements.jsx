@@ -18,7 +18,7 @@ const achievements = [
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-16  scroll-mt-24 md:scroll-mt-32">
+    <section id="achievements" className="py-16  scroll-mt-32">
       <div className="max-w-6xl mx-auto px-4">
         {/* Title */}
         <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-12 relative">

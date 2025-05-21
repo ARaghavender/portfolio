@@ -39,7 +39,7 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-16 bg-white dark:bg-gray-900 scroll-mt-24 md:scroll-mt-32">
+    <section id="experience" className="py-16 bg-white dark:bg-gray-900 scroll-mt-32">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">
           Experience

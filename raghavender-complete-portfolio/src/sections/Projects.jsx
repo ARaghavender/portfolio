@@ -34,7 +34,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="scroll-mt-24 md:scroll-mt-32 py-16">
+    <section id="projects" className="scroll-mt-32 py-16">
   <div className="max-w-6xl mx-auto px-6 lg:px-8">
     <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">
       Projects

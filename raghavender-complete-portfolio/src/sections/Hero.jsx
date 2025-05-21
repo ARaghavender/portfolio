@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="py-24 px-6 lg:px-24 scroll-mt-24 md:scroll-mt-32 bg-white dark:bg-gray-900"
+      className="py-24 px-6 lg:px-24 scroll-mt-32 bg-white dark:bg-gray-900"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center lg:flex-row lg:items-start justify-center gap-8">
         {/* Profile Image - On top for mobile, on right for desktop */}
