@@ -11,49 +11,62 @@ import Achievements from "./sections/Achievements";
 import Contact from "./sections/Contact";
 
 export default function App() {
-  const [theme, setTheme] = useState(""); // Start with empty theme
+  // Initialize theme from document class (set in index.js)
+  const [theme, setTheme] = useState(
+    document.documentElement.classList.contains("dark") ? "dark" : "light"
+  );
 
-  // Set initial theme from localStorage or system preference
-  useEffect(() => {
-    // First check if there's a saved theme in localStorage
-    const savedTheme = localStorage.getItem("theme");
-    
-    if (savedTheme) {
-      // If there's a saved theme, use it
-      setTheme(savedTheme);
-    } else {
-      // Otherwise, use system preference
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const systemTheme = prefersDark ? "dark" : "light";
-      setTheme(systemTheme);
-      localStorage.setItem("theme", systemTheme);
-    }
-  }, []);
-
-  // Apply theme to <html> whenever theme changes
-  useEffect(() => {
-    // Only apply theme if it's not empty (prevents flash on initial load)
-    if (theme) {
-      document.documentElement.classList.remove("light", "dark");
-      document.documentElement.classList.add(theme);
-      localStorage.setItem("theme", theme);
-    }
-  }, [theme]);
-
-  // Toggle theme function that you can pass to components
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
+  // Function to handle theme changes
+  const handleThemeChange = (newTheme) => {
+    // Update state
     setTheme(newTheme);
+    
+    // Update document classes
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(newTheme);
+    
+    // Save to localStorage
+    localStorage.setItem("theme", newTheme);
+    
+    // Log for debugging
+    console.log(`Theme changed to: ${newTheme}`);
+    console.log(`HTML classes: ${document.documentElement.className}`);
   };
 
-  // Don't render until theme is determined to prevent flash
-  if (!theme) return null;
+  // Toggle theme function to pass to Header
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    handleThemeChange(newTheme);
+  };
+
+  // Watch for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    
+    const handleSystemThemeChange = (e) => {
+      // Only change theme if we're following system preference
+      // (no localStorage theme has been set)
+      if (!localStorage.getItem("theme")) {
+        const newTheme = e.matches ? "dark" : "light";
+        handleThemeChange(newTheme);
+      }
+    };
+    
+    // Listen for changes
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+    
+    // Cleanup
+    return () => {
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    };
+  }, []);
 
   return (
-    <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-      <Header theme={theme} setTheme={setTheme} toggleTheme={toggleTheme} />
+    // Force the container to take the full height
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+      <Header theme={theme} toggleTheme={toggleTheme} />
       
-      <main className="space-y-20 pt-20">
+      <main className="flex-grow space-y-20 pt-20">
         <Hero />
         <About />
         <Skills />
