@@ -1,13 +1,15 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import profileImage from "../images/profile_pic.jpg";
+
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="py-24 px-6 lg:px-24  scroll-mt-24 bg-white dark:bg-gray-900"
+      className="py-24 px-6 lg:px-24  scroll-mt-32 bg-white dark:bg-gray-900"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start justify-center gap-8">
         {/* Centered Text */}
@@ -42,19 +44,37 @@ export default function Hero() {
           </div>
 
           <div className="flex justify-center lg:justify-start gap-6 mb-6">
-            <a href="https://www.linkedin.com/in/raghavender-angadi-a11718209/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:scale-110 transition">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" className="w-5 h-5" alt="LinkedIn" />
-            </a>
-            <a href="https://github.com/ARaghavender" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:scale-110 transition">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" className="w-5 h-5 dark:invert" alt="GitHub" />
-            </a>
-            <a href="https://mail.google.com/mail/?view=cm&to=angadiraghavender@gmail.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:scale-110 transition">
-              <FontAwesomeIcon icon={faEnvelope} className="text-indigo-600 text-sm" />
-            </a>
-            <a href="tel:9282667331" className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:scale-110 transition">
-              <FontAwesomeIcon icon={faPhone} className="text-indigo-600 text-sm" />
-            </a>
-          </div>
+  <a
+    href="https://www.linkedin.com/in/raghavender-angadi-a11718209/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:scale-110 transition"
+  >
+    <FaLinkedin className="text-indigo-600 text-xl" />
+  </a>
+  <a
+    href="https://github.com/ARaghavender"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:scale-110 transition"
+  >
+    <FaGithub className="text-indigo-600 text-xl" />
+  </a>
+  <a
+    href="https://mail.google.com/mail/?view=cm&to=angadiraghavender@gmail.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:scale-110 transition"
+  >
+    <FontAwesomeIcon icon={faEnvelope} className="text-indigo-600 text-sm" />
+  </a>
+  <a
+    href="tel:9282667331"
+    className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:scale-110 transition"
+  >
+    <FontAwesomeIcon icon={faPhone} className="text-indigo-600 text-sm" />
+  </a>
+</div>
         </div>
 
         {/* Profile Image on Right */}

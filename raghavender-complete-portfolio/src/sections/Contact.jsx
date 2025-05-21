@@ -24,7 +24,7 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="pt-16  scroll-mt-24 pb-0">
+    <section id="contact" className="pt-16  scroll-mt-32 pb-0">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">
           Contact Me

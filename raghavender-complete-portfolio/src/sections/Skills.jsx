@@ -18,11 +18,11 @@ const SkillSection = ({ title, skills }) => (
 
 export default function Skills() {
   return (
-    <section id="skills" className="max-w-6xl mx-auto px-6 py-16 bg-white scroll-mt-24 dark:bg-gray-900">
+    <section id="skills" className="max-w-6xl mx-auto px-6 py-16 bg-white scroll-mt-32 dark:bg-gray-900">
       {/* Section heading like the image */}
       <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">
         Skills
-        <span className="block w-24 h-1 bg-indigo-400 mx-auto mt-2 rounded-full" />
+         <span className="block w-24 h-1 bg-indigo-400 mx-auto mt-2 rounded-full" />
       </h2>
      
 

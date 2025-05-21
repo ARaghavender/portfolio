@@ -37,7 +37,7 @@ const certifications = [
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="py-16 scroll-mt-24">
+    <section id="certifications" className="py-16 scroll-mt-32">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">
           Certifications
