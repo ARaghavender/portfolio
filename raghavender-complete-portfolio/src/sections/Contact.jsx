@@ -24,14 +24,13 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="pt-16 pb-0">
+    <section id="contact" className="pt-16  scroll-mt-24 pb-0">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">
           Contact Me
+          <span className="block w-24 h-1 bg-indigo-400 mx-auto mt-2 rounded-full" />
         </h2>
-        <div className="flex justify-center mb-12">
-          <div className="w-20 h-1 bg-purple-400 rounded"></div>
-        </div>
+        
 
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
           {contactInfo.map((item, index) => (

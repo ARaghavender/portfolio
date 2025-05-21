@@ -34,51 +34,51 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-gray-50 dark:bg-gray-900 py-16">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">
-          Projects
-        </h2>
-        <div className="flex justify-center mb-12">
-          <div className="w-24 h-1 bg-indigo-500 rounded"></div>
-        </div>
+    <section id="projects" className="scroll-mt-24 py-16">
+  <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <h2 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-2">
+      Projects
+      <span className="block w-24 h-1 bg-indigo-400 mx-auto mt-2 rounded-full" />
+    </h2>
+    
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
-            >
-              <div className="h-40 bg-gradient-to-br from-indigo-800 to-indigo-500"></div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-indigo-500 mb-1">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{project.date}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full shadow"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 text-sm space-y-2">
-                  {project.description
-                    .trim()
-                    .split("\n")
-                    .filter(Boolean)
-                    .map((line, lineIndex) => (
-                      <li key={lineIndex}>{line.replace(/^•\s*/, "")}</li>
-                    ))}
-                </ul>
-              </div>
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project, index) => (
+        <div
+          key={index}
+          className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+        >
+          <div className="h-40 bg-gradient-to-br from-indigo-800 to-indigo-500"></div>
+          <div className="p-6">
+            <h3 className="text-xl font-bold text-indigo-500 mb-1">
+              {project.title}
+            </h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{project.date}</p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.tags.map((tag, tagIndex) => (
+                <span
+                  key={tagIndex}
+                  className="bg-gray-100 text-gray-800 text-sm px-3 py-1 rounded-full shadow"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
-          ))}
+            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 text-sm space-y-2">
+              {project.description
+                .trim()
+                .split("\n")
+                .filter(Boolean)
+                .map((line, lineIndex) => (
+                  <li key={lineIndex}>{line.replace(/^•\s*/, "")}</li>
+                ))}
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
+  </div>
+</section>
+
   );
 }
